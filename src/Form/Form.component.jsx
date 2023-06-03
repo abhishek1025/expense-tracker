@@ -9,7 +9,6 @@ const Form = () => {
 
     const { transactionDetails, setTransactionDetails } = useContext(TransactionDetailsContext);
 
-
     const changeHandler = (e) => {
 
         const { name, value } = e.target;
@@ -23,7 +22,11 @@ const Form = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        return setTransactionDetails([...transactionDetails, formFields]);
+        if (transactionDetails) {
+            return setTransactionDetails([...transactionDetails, formFields]);
+        } else {
+            return setTransactionDetails([formFields]);
+        }
     }
 
 
