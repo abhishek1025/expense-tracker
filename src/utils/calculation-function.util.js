@@ -26,6 +26,6 @@ export const getDataFromLocalStorage = () => {
     return JSON.parse(localStorage.getItem("transactionsDetails"))
 }
 
-export const deleteTransactionDetails = (indexOfDeltingItem, transactionDetails) => {
+export const deleteTransactionDetails = (transactionDetails, indexOfDeltingItem) => {
     return transactionDetails.filter((trans, index) => index !== indexOfDeltingItem);
 }

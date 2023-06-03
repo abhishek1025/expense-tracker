@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import "./Dashboard.style.scss";
 import Form from '../Form/Form.component';
-import { TransactionDetailsContext } from '../contexts/transaction-details.context';
-import { calculateIncomeAndExpenses } from '../utils/calculation-function.util';
 import { TransactionHistory } from '../transaction-history/TransactionHistory.component';
+import { useSelector } from 'react-redux';
+import { selectTransactionDetails } from '../store/transaction-details/transaction-details.reducer';
 
 const Dashboard = () => {
 
-    const { transactionDetails } = useContext(TransactionDetailsContext);
 
-    const { expenses, income } = calculateIncomeAndExpenses(transactionDetails);
+    const { expenses, income } = useSelector(selectTransactionDetails);
 
     const balance = income - expenses;
 

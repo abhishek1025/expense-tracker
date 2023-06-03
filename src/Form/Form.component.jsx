@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { TransactionDetailsContext } from '../contexts/transaction-details.context';
-import { storeDataInLocalStorage } from '../utils/calculation-function.util';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { setTransactionDetails } from '../store/transaction-details/transaction-details.reducer';
 
 const Form = () => {
 
     const [transactionType, setTransactionType] = useState("income");
     const [formFields, setFormFields] = useState({ transaction: "income" });
 
-    const { transactionDetails, setTransactionDetails } = useContext(TransactionDetailsContext);
+    const dispatch = useDispatch();
 
 
     const changeHandler = (e) => {
@@ -23,7 +23,7 @@ const Form = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        return setTransactionDetails([...transactionDetails, formFields]);
+        return dispatch(setTransactionDetails(formFields));
     }
 
 

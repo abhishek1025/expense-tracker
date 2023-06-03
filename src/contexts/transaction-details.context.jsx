@@ -9,7 +9,7 @@ export const TransactionDetailsContext = createContext({
 
 //provider that will provide the value
 export const TransactionDetailsProvider = ({ children }) => {
-    
+
     const [transactionDetails, setTransactionDetails] = useState(null);
     const value = { transactionDetails, setTransactionDetails };
 

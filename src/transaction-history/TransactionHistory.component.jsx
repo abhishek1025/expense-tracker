@@ -1,18 +1,13 @@
-import React, { useContext } from 'react';
 import './TransactioinHistory.style.scss';
-import { TransactionDetailsContext } from '../contexts/transaction-details.context';
-import { deleteTransactionDetails } from '../utils/calculation-function.util';
+import { useSelector } from 'react-redux';
+import { deleteTransactions, selectTransactionDetails } from '../store/transaction-details/transaction-details.reducer';
+import { useDispatch } from 'react-redux';
 
 export const TransactionHistory = () => {
 
-    const { transactionDetails, setTransactionDetails } = useContext(TransactionDetailsContext);
+    const { transactionDetails } = useSelector(selectTransactionDetails);
 
-    const handleTransactionDetailsDeltOperation = (index) => {
-
-        const updatedTransDetails = deleteTransactionDetails(index, transactionDetails);
-        console.log(updatedTransDetails);
-        return setTransactionDetails(updatedTransDetails);
-    }
+    const dispatch = useDispatch();
 
     return (
         <div className='transaction-history-wrapper'>
@@ -44,7 +39,7 @@ export const TransactionHistory = () => {
                             </p>
 
                             <div className='delt-btn'>
-                                <button onClick={() => handleTransactionDetailsDeltOperation(index)}>Delete</button>
+                                <button onClick={() => dispatch(deleteTransactions(index))}>Delete</button>
                             </div>
 
                         </div>
