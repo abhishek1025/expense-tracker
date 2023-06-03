@@ -8,10 +8,13 @@
     }
 
     .transaction-history {
-
+        width: 90%;
+        margin: auto;
         display: flex;
         gap: 30px;
+        justify-content: space-between;
         margin-bottom: 40px;
+        flex-wrap: wrap;
 
         .transaction {
             width: 25%;
