@@ -7,11 +7,13 @@ export const TransactionHistory = () => {
 
     const { transactionDetails, setTransactionDetails } = useContext(TransactionDetailsContext);
 
-    const handleTransactionDetailsDeltOperation = (index) => {
+    const handleTransactionDetailsDeltOperation = (index: number): void => {
 
         const updatedTransDetails = deleteTransactionDetails(index, transactionDetails);
-        console.log(updatedTransDetails);
-        return setTransactionDetails(updatedTransDetails);
+
+        if (updatedTransDetails) {
+            setTransactionDetails(updatedTransDetails);
+        }
     }
 
     return (

@@ -1,15 +1,30 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { ChangeEvent, useContext, useState } from 'react'
 import { TransactionDetailsContext } from '../contexts/transaction-details.context';
-import { storeDataInLocalStorage } from '../utils/calculation-function.util';
+
+export interface IformFields {
+    transaction: string;
+    date: string;
+    amount: string;
+    incomeSource?: string;
+    expenseName?: string;
+    paymentMethod: string;
+}
+
+const defaultFormFields: IformFields = {
+    transaction: '',
+    date: '',
+    amount: '',
+    paymentMethod: '',
+};
 
 const Form = () => {
 
     const [transactionType, setTransactionType] = useState("income");
-    const [formFields, setFormFields] = useState({ transaction: "income" });
+    const [formFields, setFormFields] = useState<IformFields>({ ...defaultFormFields, transaction: "income" });
 
     const { transactionDetails, setTransactionDetails } = useContext(TransactionDetailsContext);
 
-    const changeHandler = (e) => {
+    const changeHandler = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 
         const { name, value } = e.target;
 
@@ -20,7 +35,7 @@ const Form = () => {
         return setFormFields({ ...formFields, [name]: value, })
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = (e: ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (transactionDetails) {
             return setTransactionDetails([...transactionDetails, formFields]);

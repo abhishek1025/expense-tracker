@@ -4,15 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { TransactionDetailsProvider } from './contexts/transaction-details.context';
-import { NetIncomeExpenseProvicer } from './contexts/net-income-expense.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <TransactionDetailsProvider>
-      <NetIncomeExpenseProvicer>
-        <App />
-      </NetIncomeExpenseProvicer>
+      <App />
     </TransactionDetailsProvider>
   </React.StrictMode>
 );

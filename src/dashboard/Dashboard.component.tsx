@@ -11,7 +11,7 @@ const Dashboard = () => {
 
     const { expenses, income } = calculateIncomeAndExpenses(transactionDetails);
 
-    const balance = income - expenses;
+    const balance: number = income - expenses;
 
     return (
         <div>
